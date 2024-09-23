@@ -3,111 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Novo Título</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #A020F0;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-        main {
-            padding: 2rem;
-            display: flex;
-            justify-content: space-between;
-        }
-        table {
-            border-collapse: collapse;
-            width: 30%;
-            margin: 0 1rem;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-        th {
-            background-color: #A020F0;
-            color: white;
-        }
-        footer {
-            background-color: #A020F0;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Bem-vindo ao Site Conecte</h1>
+        <h1>Conecte</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">Sobre</a>
+            <a href="#contact">Contato</a>
+        </nav>
     </header>
-    <main>
-        <table id="tabela1">
-            <tr>
-                <th>Coluna 1</th>
-                <th>Coluna 2</th>
-            </tr>
-        </table>
-        <table id="tabela2">
-            <tr>
-                <th>Coluna 1</th>
-                <th>Coluna 2</th>
-            </tr>
-        </table>
-        <table id="tabela3">
-            <tr>
-                <th>Coluna 1</th>
-                <th>Coluna 2</th>
-            </tr>
-        </table>
-    </main>
+
+    <div class="carousel" id="carousel">
+        <div class="carousel-buttons">
+            <button onclick="prevSlide()">❮</button>
+            <button onclick="nextSlide()">❯</button>
+        </div>
+    </div>
+
     <footer>
         <p>© 2024 Meu Site. Todos os direitos reservados.</p>
     </footer>
-    <script>
-        // Função para preencher uma tabela com dados
-        function preencherTabela(tabelaId, dados) {
-            const tabela = document.getElementById(tabelaId);
-            dados.forEach(item => {
-                const row = tabela.insertRow();
-                const cell1 = row.insertCell(0);
-                const cell2 = row.insertCell(1);
-                cell1.textContent = item.coluna1;
-                cell2.textContent = item.coluna2;
-            });
-        }
 
-        // Exemplo de dados que poderiam vir de uma API
-        const dadosExemplo = [
-            { coluna1: 'Dados 1', coluna2: 'Dados 2' },
-            { coluna1: 'Dados 3', coluna2: 'Dados 4' },
-            { coluna1: 'Dados 5', coluna2: 'Dados 6' }
-        ];
-
-        // Preencher as tabelas com os dados de exemplo
-        preencherTabela('tabela1', dadosExemplo);
-        preencherTabela('tabela2', dadosExemplo);
-        preencherTabela('tabela3', dadosExemplo);
-
-        // Exemplo de como buscar dados de uma API
-        fetch('https://api.exemplo.com/dados')
-            .then(response => response.json())
-            .then(data => {
-                preencherTabela('tabela1', data);
-                preencherTabela('tabela2', data);
-                preencherTabela('tabela3', data);
-            })
-            .catch(error => console.error('Erro ao buscar dados:', error));
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
