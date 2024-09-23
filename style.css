@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, black, gray);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+header nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.carousel {
+   
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    flex: 1;
+    margin: 0 20px ;
+    opacity: 0.8;
+    animation: fadeIn 2s forwards;
+    align-items: center; /* Centralizar verticalmente */
+}
+
+.carousel-item {
+
+    margin: 0 0 0 300px;
+
+    transition: transform 0.5s ease;
+    padding: 11px;
+    background: rgba(255, 255, 255, 0.1); /* Fundo quase transparente */
+    color: white; /* Letras brancas */
+    border-radius: 10px; /* Bordas arredondadas */
+    margin: 0 0; /* Reduzir a distância entre as tabelas */
+    box-sizing: border-box; /* Garantir que o padding não afete a largura total */
+    overflow-y: auto; /* Permitir rolagem vertical */
+    max-height: 100%; /* Garantir que a tabela não ultrapasse a altura do carrossel */
+}
+
+.carousel-item h2 {
+    color: white;
+    text-align: center; /* Centralizar o título */
+}
+
+.carousel-item table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.carousel-item th, .carousel-item td {
+    padding: 8px;
+    text-align: left;
+}
+
+.carousel-item th {
+    background: rgba(0, 0, 0, 0.5); /* Fundo mais escuro para o cabeçalho */
+}
+
+.carousel-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-buttons button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 30px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    bottom: 0;
+}
