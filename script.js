@@ -12,6 +12,23 @@ function showSlide(index) {
         }
     });
 }
+async function conectMetamask() {
+            if (window.ethereum) {
+                try {
+                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                    const account = accounts[0];
+                    console.log('Conectado à MetaMask:', account);
+                    // Verificar se o usuário possui o NFT específico
+                    // ...
+                } catch (error) {
+                    console.error('Erro ao conectar à MetaMask:', error);
+                }
+            } else {
+                alert('MetaMask não está instalada!');
+            }
+        }
+
+
 
 function nextSlide() {
     const slides = document.querySelectorAll('.carousel-item');
