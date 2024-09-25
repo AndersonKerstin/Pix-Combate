@@ -96,6 +96,6 @@ async function checkNFTOwnership(account, contractAddress, tokenId) {
     const contract = new web3.eth.Contract(abi, contractAddress);
     const balance = await contract.methods.balanceOf(account, tokenId).call();
     return balance > 0;
-    console.log('Conectado à MetaMask:', web3);
+   
 
 }
