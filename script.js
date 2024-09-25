@@ -73,3 +73,19 @@ async function fetchData() {
 }
 
 fetchData();
+
+// Conectar à MetaMask
+async function connectMetaMask() {
+    if (window.ethereum) {
+        try {
+            const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+            const account = accounts[0];
+            console.log('Conectado à MetaMask:', account);
+            return account;
+        } catch (error) {
+            console.error('Erro ao conectar à MetaMask:', error);
+        }
+    } else {
+        alert('MetaMask não está instalada!');
+    }
+}
