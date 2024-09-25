@@ -24,22 +24,6 @@ function prevSlide() {
     currentSlide = (currentSlide - 1 + slides.length) % slides.length;
     showSlide(currentSlide);
 }
-async function conectMetamask() {
-            if (window.ethereum) {
-                try {
-                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-                    const account = accounts[0];
-                    console.log('Conectado à MetaMask:', account);
-                    alert('MetaMask já está instalada!');
-                    // Verificar se o usuário possui o NFT específico
-                    // ...
-                } catch (error) {
-                   alert('Erro ao tentar conectar a Metamask!');
-                }
-            } else {
-                alert('MetaMask não está instalada!');
-            }
-        }
 
 async function fetchData() {
     try {
@@ -89,17 +73,3 @@ async function fetchData() {
 }
 
 fetchData();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
