@@ -80,10 +80,10 @@ async function connectMetaMask() {
         try {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
             const account = accounts[0];
-            console.log('Conectado à MetaMask:', account);
+            alert('Erro ao conectar à MetaMask!');
             return account;
         } catch (error) {
-            console.error('Erro ao conectar à MetaMask:', error);
+            alert('Erro ao conectar à MetaMask!');
         }
     } else {
         alert('MetaMask não está instalada!');
@@ -96,5 +96,6 @@ async function checkNFTOwnership(account, contractAddress, tokenId) {
     const contract = new web3.eth.Contract(abi, contractAddress);
     const balance = await contract.methods.balanceOf(account, tokenId).call();
     return balance > 0;
+    console.log('Conectado à MetaMask:', web3);
 
 }
