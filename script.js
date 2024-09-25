@@ -75,7 +75,7 @@ async function fetchData() {
 fetchData();
 
 // Conectar à MetaMask
-async function connectMetaMask() {
+async function conectMetamask() {
     if (window.ethereum) {
         try {
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
