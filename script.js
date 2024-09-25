@@ -89,3 +89,12 @@ async function connectMetaMask() {
         alert('MetaMask não está instalada!');
     }
 }
+
+/// Verificar posse do NFT
+async function checkNFTOwnership(account, contractAddress, tokenId) {
+    const web3 = new web3(window.ethereum);
+    const contract = new web3.eth.Contract(abi, contractAddress);
+    const balance = await contract.methods.balanceOf(account, tokenId).call();
+    return balance > 0;
+
+}
