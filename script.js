@@ -90,12 +90,14 @@ async function connectMetaMask() {
     }
 }
 
-/// Verificar posse do NFT
+// Verificar posse do NFT
 async function checkNFTOwnership(account, contractAddress, tokenId) {
     const web3 = new Web3(window.ethereum);
     const contract = new web3.eth.Contract(abi, contractAddress);
-    const balance = await contract.methods.balanceOf(account, tokenId).call();
-    return balance > 0;
+    const owner = await contract.methods.ownerOf(tokenId).call();
+    return owner.toLowerCase() === account.toLowerCase();
+}
+
    
 
 }
