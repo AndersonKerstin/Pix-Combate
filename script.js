@@ -92,6 +92,7 @@ async function connectMetaMask() {
 
 // Verificar posse do NFT
 async function checkNFTOwnership(account, contractAddress, tokenId) {
+    let web3;
     const web3 = new Web3(window.ethereum);
     const contract = new web3.eth.Contract(abi, contractAddress);
     const owner = await contract.methods.ownerOf(tokenId).call();
