@@ -1,17 +1,7 @@
 let currentSlide = 0;
 const carousel = document.getElementById('carousel');
 
-function showSlide(index) {
-    const slides = document.querySelectorAll('.carousel-item');
-    slides.forEach((slide, i) => {
-        if (i >= index && i < index + 3) {
-            slide.style.display = 'block';
-            slide.style.transform = `translateX(${100 * (i - index)}%)`;
-        } else {
-            slide.style.display = 'none';
-        }
-    });
-}
+
 async function conectMetamask() {
             if (window.ethereum) {
                 try {
@@ -31,6 +21,18 @@ async function conectMetamask() {
 
 
 
+function showSlide(index) {
+    const slides = document.querySelectorAll('.carousel-item');
+    slides.forEach((slide, i) => {
+        if (i >= index && i < index + 3) {
+            slide.style.display = 'block';
+            slide.style.transform = `translateX(${10 * (i - index)}%)`;
+        } else {
+            slide.style.display = 'none';
+        }
+    });
+}
+
 function nextSlide() {
     const slides = document.querySelectorAll('.carousel-item');
     currentSlide = (currentSlide + 1) % slides.length;
@@ -43,8 +45,6 @@ function prevSlide() {
     showSlide(currentSlide);
 }
 
-
-// Função para buscar dados do PolygonScan e atualizar as tabelas
 async function fetchData() {
     try {
         const response = await fetch('https://api.polygonscan.com/api?module=account&action=tokennfttx&address=0x54FB1Bb165D9030Cb335dcBDdBe103a53BB40098&startblock=0&endblock=999999999&sort=asc&apikey=271988RGKDC66P4K6222U9Y9B3CXU9S2T9');
@@ -58,7 +58,10 @@ async function fetchData() {
             return acc;
         }, {});
 
-        Object.keys(nfts).forEach(tokenName => {
+        // Ordenar os tokens pela quantidade de NFTs
+        const sortedTokenNames = Object.keys(nfts).sort((a, b) => nfts[b].length - nfts[a].length);
+
+        sortedTokenNames.forEach(tokenName => {
             const table = document.createElement('div');
             table.className = 'carousel-item';
             table.innerHTML = `
