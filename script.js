@@ -49,8 +49,9 @@ async function fetchData() {
                 <table>
                     <thead>
                         <tr>
-                            <th>Usuário</th>
-                            <th>Tokens</th>
+                            <th>Opniões</th>
+                            <th>Relevancia</th>
+                            <th>Detentores</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +59,7 @@ async function fetchData() {
                             <tr>
                                 <td>${nft.to}</td>
                                 <td>${nft.tokenID}</td>
+                                <td>${nft.to}</td>
                             </tr>
                         `).join('')}
                     </tbody>
