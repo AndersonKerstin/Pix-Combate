@@ -59,7 +59,7 @@ async function fetchData() {
                             <tr>
                                 <td>${nft.to}</td>
                                 <td>${nft.tokenID}</td>
-                                <td>celula 3</td>
+                                <td>"celula 3"</td>
                             </tr>
                         `).join('')}
                     </tbody>
