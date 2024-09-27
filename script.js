@@ -31,10 +31,10 @@ async function fetchData() {
         const data = await response.json();
         
         const nfts = data.result.reduce((acc, nft) => {
-            if (!acc[nft.from]) {
-                acc[nft.from] = [];
+            if (!acc[nft.tokenName]) {
+                acc[nft.tokenName] = [];
             }
-            acc[nft.from].push(nft);
+            acc[nft.tokenName].push(nft);
             return acc;
         }, {});
 
@@ -45,7 +45,7 @@ async function fetchData() {
             const table = document.createElement('div');
             table.className = 'carousel-item';
             table.innerHTML = `
-                <h2>${from}</h2>
+                <h2>${tokenName}</h2>
                 <table>
                     <thead>
                         <tr>
@@ -55,7 +55,7 @@ async function fetchData() {
                         </tr>
                     </thead>
                     <tbody>
-                        ${nfts[from].map(nft => `
+                        ${nfts[tokenName].map(nft => `
                             <tr>
                                 <td>${nft.tokenID}</td>
                                 <td>${nft.tokenSymbol}</td>
