@@ -58,7 +58,7 @@ async function fetchData() {
                         ${nfts[tokenName].map(nft => `
                             <tr>
                                 <td>${nft.tokenID}</td>
-                                <td>${nft.to}</td>
+                                <td>${nft.tokenSymbol}</td>
                                 <td>${nft.confirmations}</td>
                             </tr>
                         `).join('')}
