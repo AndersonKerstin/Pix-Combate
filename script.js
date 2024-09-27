@@ -34,7 +34,7 @@ async function fetchData() {
             if (!acc[nft.from]) {
                 acc[nft.from] = [];
             }
-            acc[nft.tokenName].push(nft);
+            acc[nft.from].push(nft);
             return acc;
         }, {});
 
