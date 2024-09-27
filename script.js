@@ -45,7 +45,7 @@ async function fetchData() {
             const table = document.createElement('div');
             table.className = 'carousel-item';
             table.innerHTML = `
-                <h2>${tokenName}</h2>
+                <h2>${from}</h2>
                 <table>
                     <thead>
                         <tr>
@@ -55,7 +55,7 @@ async function fetchData() {
                         </tr>
                     </thead>
                     <tbody>
-                        ${nfts[tokenName].map(nft => `
+                        ${nfts[from].map(nft => `
                             <tr>
                                 <td>${nft.tokenID}</td>
                                 <td>${nft.tokenSymbol}</td>
