@@ -41,7 +41,7 @@ async function fetchData() {
         // Ordenar os tokens pela quantidade de NFTs
         const sortedTokenNames = Object.keys(nfts).sort((a, b) => nfts[b].length - nfts[a].length);
 
-        sortedTokenNames.forEach(fron => {
+        sortedTokenNames.forEach(tokenName => {
             const table = document.createElement('div');
             table.className = 'carousel-item';
             table.innerHTML = `
