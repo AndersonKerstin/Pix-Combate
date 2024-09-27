@@ -31,8 +31,8 @@ async function fetchData() {
         const data = await response.json();
         
         const nfts = data.result.reduce((acc, nft) => {
-            if (!acc[nft.tokenName]) {
-                acc[nft.tokenName] = [];
+            if (!acc[nft.from]) {
+                acc[nft.from] = [];
             }
             acc[nft.tokenName].push(nft);
             return acc;
