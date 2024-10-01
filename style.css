@@ -21,11 +21,11 @@ header nav a {
 }
 
 .carousel {
-   
+    height: 300px; /* Defina a altura desejada */   
     position: relative;
     display: flex;
     overflow: hidden;
-    width: 100%;
+    width: 75%;
     flex: 1;
     margin: 0 20px ;
     opacity: 0.8;
@@ -33,10 +33,37 @@ header nav a {
     align-items: center; /* Centralizar verticalmente */
 }
 
+
+
+.users {
+display: flex;
+flex: 1;
+flex-direction: column; /* Define a direção como vertical */
+border: 1px solid #ccc;    
+transform: translateY(-50%);
+background: rgba(255, 255, 255, 0.1); /* Fundo quase transparente */
+color: white; /* Letras brancas */
+margin: 0 0; /* Reduzir a distância entre as tabelas */
+box-sizing: border-box; /* Garantir que o padding não afete a largura total */
+transition: transform 0.5s ease;
+padding: 11px;
+margin: 0 0 0 300px;
+top: 50%;
+right: 0;
+width: 20%;
+position: fixed;
+height: 300px; /* Defina a altura desejada */
+border-radius: 10px; /* Bordas arredondadas */
+max-height: 100%; /* Garantir que a tabela não ultrapasse a altura do carrossel */
+
+}
+
+
 .carousel-item {
 
+ display: inline-block;       
+            
     margin: 0 0 0 300px;
-
     transition: transform 0.5s ease;
     padding: 11px;
     background: rgba(255, 255, 255, 0.1); /* Fundo quase transparente */
@@ -44,7 +71,7 @@ header nav a {
     border-radius: 10px; /* Bordas arredondadas */
     margin: 0 0; /* Reduzir a distância entre as tabelas */
     box-sizing: border-box; /* Garantir que o padding não afete a largura total */
-    overflow-y: auto; /* Permitir rolagem vertical */
+   /* overflow-y: auto; /* Permitir rolagem vertical */
     max-height: 100%; /* Garantir que a tabela não ultrapasse a altura do carrossel */
 }
 
@@ -94,3 +121,12 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+
+
+
+
+
+   
+   
+           
