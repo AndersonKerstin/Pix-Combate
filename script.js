@@ -1,5 +1,7 @@
 let currentSlide = 0;
+let currentUser = 0;
 const carousel = document.getElementById('carousel');
+const users = document.getElementById('users');
 
 function showSlide(index) {
     const slides = document.querySelectorAll('.carousel-item');
@@ -12,6 +14,22 @@ function showSlide(index) {
         }
     });
 }
+
+
+function showUsersTab(rank) {
+const tabs = document.querySelectorAll('.users');
+    tabs.forEach((tab, i) => {
+        if (i >= rank && i < rank + 3) {
+            
+            tab.style.transform = `translateX(${10 * (i - rank)}%)`;
+        } else {
+            tab.style.display = 'none';
+        }
+    });
+  
+}
+
+
 
 function nextSlide() {
     const slides = document.querySelectorAll('.carousel-item');
@@ -74,7 +92,56 @@ async function fetchData() {
     }
 }
 
+
+
+
+async function usersData() {
+    try {
+        const response = await fetch('https://api.polygonscan.com/api?module=account&action=tokennfttx&address=0x54FB1Bb165D9030Cb335dcBDdBe103a53BB40098&startblock=0&endblock=999999999&sort=asc&apikey=271988RGKDC66P4K6222U9Y9B3CXU9S2T9');
+        const data = await response.json();
+        
+        const nfts = data.result.reduce((acc, nft) => {
+            if (!acc[nft.tokenName]) {
+                acc[nft.tokenName] = [];
+            }
+            acc[nft.tokenName].push(nft);
+            return acc;
+        }, {});
+
+        // Ordenar os tokens pela quantidade de NFTs
+        const sortedTokenNames = Object.keys(nfts).sort((a, b) => nfts[b].length - nfts[a].length);
+
+        sortedTokenNames.forEach(tokenName => {
+            const table = document.createElement('div');
+            table.className = 'users';
+            table.innerHTML = `
+                <h2>${tokenName}</h2>
+                <table>
+                   
+                    <tbody>
+                        ${nfts[tokenName].map(nft => `
+                            <tr>
+                                <td>${nft.tokenID}</td>
+                                <td>${nft.tokenSymbol}</td>
+                                <td>${nft.confirmations}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            carousel.insertBefore(table, document.querySelector('.carousel-buttons'));
+        });
+
+        showUsersTab(currentUser);
+    } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+    }
+}
+
+
 fetchData();
+usersData();
+
 
 // Conectar à MetaMask
 async function connectMetaMask() {
@@ -99,4 +166,5 @@ async function checkNFTOwnership(account, contractAddress, tokenId) {
     const balance = await contract.methods.balanceOf(account, tokenId).call();
     return balance > 0;
 }
+
 
